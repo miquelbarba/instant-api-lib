@@ -1,3 +1,5 @@
+require 'instant_api/controller/build_new_edit'
+
 module InstantApi::Controller
   class BuildShow
 
@@ -6,17 +8,7 @@ module InstantApi::Controller
     end
 
     def build
-      @controller.class_eval(&build_show)
-    end
-
-    private
-
-    def build_show
-      Proc.new do
-        def show
-          render json: resource
-        end
-      end
+      BuildNewEdit.new(@controller, 'show').build
     end
   end
 end

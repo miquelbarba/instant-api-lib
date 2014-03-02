@@ -4,8 +4,7 @@ module InstantApi::Controller
     attr_reader :model_class_name, :controller
 
     def initialize(controller, model_class_name)
-      @controller = controller
-      @model_class_name = model_class_name
+      @controller, @model_class_name = controller, model_class_name
     end
 
     def build
