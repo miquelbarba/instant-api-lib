@@ -1,1 +1,3 @@
 == Automatically creates a REST API from a Rails project
+
+{<img src="https://codeclimate.com/github/miquelbarba/instant-api.png" />}[https://codeclimate.com/github/miquelbarba/instant-api]
