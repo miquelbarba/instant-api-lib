@@ -1,3 +1,4 @@
+require 'rails-api'
 require 'instant_api/controller/exception_handler'
 require 'instant_api/controller/build_create'
 require 'instant_api/controller/build_destroy'
@@ -21,7 +22,7 @@ module InstantApi::Controller
 
     def build_class
       controller_class_name = "#{controller_name.camelize}Controller"
-      controller = Class.new(ApplicationController)
+      controller = Class.new(ActionController::API)
       controller.send(:include, InstantApi::Controller::ExceptionHandler)
       build_methods(controller)
 

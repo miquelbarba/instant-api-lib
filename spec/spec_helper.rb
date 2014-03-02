@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'ffaker'
 require 'factory_girl'
 require 'webmock/rspec'
+require 'instant_api'
 
 
 Dir[Rails.root.join('spec/support/*.rb')].each { |f| require f }

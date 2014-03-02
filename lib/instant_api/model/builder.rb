@@ -37,7 +37,34 @@ module InstantApi::Model
     end
 
     def params_for_klass
-      @params_for_klass ||= params[klass.name.underscore]
+      @params_for_klass ||= begin
+        name = klass.name.underscore
+        klass_params = params[name] ? params[name] : params
+        klass_params.select { |k, _| klass_attributes.index(k) }
+      end
+    end
+
+    def klass_attributes
+      @klass_attributes ||= plain_attributes + association_attributes
+    end
+
+    def plain_attributes_confirmation
+      validator_class = ActiveModel::Validations::ConfirmationValidator
+      klass.column_names.select do |column|
+        validators = klass.validators_on(column)
+        validators.select { |validator| validator.is_a?(validator_class) }.any?
+      end.map { |column| "#{column}_confirmation" }
+    end
+
+    def plain_attributes
+      klass.column_names + plain_attributes_confirmation
+    end
+
+    ASSOCIATION_TYPES = [:belongs_to, :has_many, :has_one, :has_and_belongs_to_many]
+    def association_attributes
+      ASSOCIATION_TYPES.map do |type|
+        klass.reflect_on_all_associations(type).map(&:name).map(&:to_s)
+      end.flatten
     end
 
     def create_nested_records(record)
