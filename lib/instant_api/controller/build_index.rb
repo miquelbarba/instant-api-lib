@@ -9,11 +9,9 @@ module InstantApi::Controller
     end
 
     def build
-      controller.class_eval(&build_index)
-      controller.class_eval(&build_page)
-      controller.class_eval(&build_per_page)
-      controller.class_eval(&build_collection)
-      controller.class_eval(&build_paginated_collection)
+      methods = [build_index, build_page, build_per_page, build_collection,
+                 build_paginated_collection]
+      methods.each { |m| controller.class_eval(&m) }
     end
 
     private
