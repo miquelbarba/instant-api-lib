@@ -1,14 +1,11 @@
-require 'instant_api/controller/build_new_edit'
+require 'instant_api/controller/build_show'
 
 module InstantApi::Controller
-  class BuildEdit
+  class BuildEdit < BuildShow
 
     def initialize(controller, model_class_name = nil)
       @controller = controller
-    end
-
-    def build
-      BuildNewEdit.new(@controller, 'edit').build
+      @method = 'edit'
     end
   end
 end

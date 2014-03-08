@@ -14,9 +14,11 @@ module InstantApi::Controller
     private
 
     def build_resource
+      # TODO: extract this require
       body = %Q{
+        require 'instant_api/model/resource'
         def resource
-          #{model_class_name}.find(params[:id])
+          InstantApi::Model::Resource.new(#{model_class_name}, request.path, params).find
         end
         private :resource
       }
