@@ -12,10 +12,12 @@ describe InstantApi::Controller::BuildResource do
     context 'call to resource' do
       let(:resource) { Object.new }
       let(:params)   { {id: 3} }
+      let(:request)  { double(:request, path: '/a/3')}
       class Aclass; end
 
       before do
         controller.should_receive(:params).and_return(params)
+        controller.should_receive(:request).and_return(request)
         Aclass.should_receive(:find).with(3).and_return(resource)
       end
 
