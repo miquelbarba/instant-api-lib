@@ -32,8 +32,8 @@ module InstantApi::Model
     end
 
     def build_joins(url)
-      head, *rest, _ = *resources(url)
-      [head.to_s.singularize.to_sym] + rest
+      *rest, _ = *resources(url)
+      rest
     end
 
     def build_params(url, params)
@@ -43,8 +43,8 @@ module InstantApi::Model
       klass = to_class(resource)
       rest.map do |association_name|
         if (assoc = association(klass, association_name))
-          table = association_table(assoc)
-          result[table] = { assoc.primary_key_name => params[assoc.primary_key_name] }
+          table = assoc.join_table
+          result[table] = { assoc.foreign_key => params[assoc.foreign_key] }
         end
 
         resource = association_name
@@ -56,10 +56,6 @@ module InstantApi::Model
 
     def to_class(symbol)
       symbol.to_s.classify.constantize
-    end
-
-    def association_table(assoc)
-      assoc.options[:join_table] || assoc.name
     end
 
     def association(klass, name)
