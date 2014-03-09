@@ -151,7 +151,15 @@ describe InstantApi::Model::Builder do
         let(:data) { Hash.new }
         before     { User.class_eval { validates_presence_of :email } }
 
-        it { validate_error(subject.build, :email, "can't be blank") }
+        it {
+          begin
+            validate_error(subject.build, :email, "can't be blank")
+          rescue
+            puts $!.message
+            puts $!.backtrace
+
+          end
+            }
       end
 
       context 'length validations' do
