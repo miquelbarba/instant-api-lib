@@ -38218,3 +38218,442 @@ Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms)
   [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'a' LIMIT 1
   [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
   [1m[35m (4.0ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35m (0.3ms)[0m  SELECT @@FOREIGN_KEY_CHECKS
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 0[0m
+  [1m[35m (0.1ms)[0m  SELECT DATABASE() as db
+  [1m[36m (2.6ms)[0m  [1mselect table_name from information_schema.views where table_schema = 'instant-api_test'[0m
+  [1m[35m (3.7ms)[0m  TRUNCATE TABLE `addresses`;
+  [1m[36m (4.0ms)[0m  [1mTRUNCATE TABLE `as`;[0m
+  [1m[35m (4.0ms)[0m  TRUNCATE TABLE `as_ds`;
+  [1m[36m (5.3ms)[0m  [1mTRUNCATE TABLE `bs`;[0m
+  [1m[35m (4.6ms)[0m  TRUNCATE TABLE `cs`;
+  [1m[36m (4.5ms)[0m  [1mTRUNCATE TABLE `ds`;[0m
+  [1m[35m (3.8ms)[0m  TRUNCATE TABLE `users`;
+  [1m[36m (0.1ms)[0m  [1mSET FOREIGN_KEY_CHECKS = 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"email"=>"burley_mueller@walshrutherford.com", "age"=>"20", "born_at"=>"1994-03-09 00:30:55 UTC", "registered_at"=>"2014-03-09T01:30:55+01:00", "terms_accepted"=>true, "money"=>"4.2"}}
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'burley_mueller@walshrutherford.com', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')[0m
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 3.2ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'velda@christiansen.info', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  DELETE FROM `users` WHERE `users`.`id` = 2
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 0.6ms)
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM `users` WHERE `users`.`id` = 2[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'claire@wyman.com', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+Processing by UsersController#destroy as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'winifred.boyle@koss.info', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 4 LIMIT 1[0m
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'alta@roob.com', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` WHERE `users`.`id` = 6 LIMIT 1[0m
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+Processing by UsersController#index as HTML
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'gage@prosacco.info', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'eric@reichertmurray.info', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')[0m
+Processing by UsersController#index as HTML
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'eloise@halvorson.ca', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:55', 'roger@schinner.name', 4.2, '2014-03-09 00:30:55', 1, '2014-03-09 00:30:55')[0m
+Processing by UsersController#index as HTML
+  Parameters: {"page"=>"1", "per_page"=>"1"}
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 1 OFFSET 0[0m
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+  [1m[35m (0.5ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'betty_kuvalis@hagenes.name', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'lance.oconnell@gutmann.co.uk', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#index as HTML
+  Parameters: {"page"=>"2", "per_page"=>"1"}
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 1 OFFSET 1[0m
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'maynard@jerde.us', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'maximillia_gutmann@collier.com', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#index as HTML
+  Parameters: {"page"=>"2"}
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 10 OFFSET 10[0m
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'winifred_robel@pfannerstillpfannerstill.info', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'joany.marvin@littel.biz', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#index as HTML
+  Parameters: {"page"=>"a"}
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT `users`.* FROM `users` LIMIT 10 OFFSET 0[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'sydni@beckerfahey.name', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')
+Processing by UsersController#new as HTML
+Completed 200 OK in 0ms (ActiveRecord: 0.0ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'kevon@kubhermiston.us', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 17 LIMIT 1
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'cleta.renner@hegmannframi.co.uk', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"19"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 19 LIMIT 1
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'ariel@harrisdickens.us', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"hello@at.com"}, "id"=>"19"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 19 LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE `users` SET `email` = 'hello@at.com', `updated_at` = '2014-03-09 00:30:56' WHERE `users`.`id` = 19[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 19 LIMIT 1
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'shanie.rolfson@vonrueden.info', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"hello@at.com"}, "id"=>"21"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 21 LIMIT 1
+Completed 404 Not Found in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'jaime@howe.name', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"a"}, "id"=>"21"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 21 LIMIT 1
+Completed 422 Unprocessable Entity in 8ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`age`, `born_at`, `created_at`, `email`, `money`, `registered_at`, `terms_accepted`, `updated_at`) VALUES (20, '1994-03-09', '2014-03-09 00:30:56', 'shaina@renner.info', 4.2, '2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')[0m
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"email"=>"a", "age"=>"3"}, "id"=>"22"}
+  [1m[35mUser Load (4.4ms)[0m  SELECT `users`.* FROM `users` WHERE `users`.`id` = 22 LIMIT 1
+Completed 422 Unprocessable Entity in 9ms (Views: 0.2ms | ActiveRecord: 4.4ms)
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.6ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `email`, `updated_at`) VALUES ('2014-03-09 00:30:56', 'a', '2014-03-09 00:30:56')[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`age`, `created_at`, `updated_at`) VALUES (1, '2014-03-09 00:30:56', '2014-03-09 00:30:56')
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`born_at`, `created_at`, `updated_at`) VALUES ('1974-03-01', '2014-03-09 00:30:56', '2014-03-09 00:30:56')[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `users` (`created_at`, `registered_at`, `updated_at`) VALUES ('2014-03-09 00:30:56', '1974-03-01 10:29:00', '2014-03-09 00:30:56')
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `money`, `updated_at`) VALUES ('2014-03-09 00:30:56', 10.99, '2014-03-09 00:30:56')[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `users` (`created_at`, `terms_accepted`, `updated_at`) VALUES ('2014-03-09 00:30:56', 1, '2014-03-09 00:30:56')
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `users` (`created_at`, `terms_accepted`, `updated_at`) VALUES ('2014-03-09 00:30:56', 0, '2014-03-09 00:30:56')[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `addresses` (`created_at`, `street`, `updated_at`) VALUES ('2014-03-09 00:30:56', 'a', '2014-03-09 00:30:56')[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `addresses` SET `user_id` = 30, `updated_at` = '2014-03-09 00:30:56' WHERE `addresses`.`id` = 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `addresses` WHERE `addresses`.`user_id` = 30[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `as` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'a')
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `bs` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'b')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `cs` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'c')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `cs` SET `b_id` = 1, `updated_at` = '2014-03-09 00:30:56' WHERE `cs`.`id` = 1[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE `bs` SET `a_id` = 1, `updated_at` = '2014-03-09 00:30:56' WHERE `bs`.`id` = 1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `bs` WHERE `bs`.`a_id` = 1[0m
+  [1m[35mB Load (0.3ms)[0m  SELECT `bs`.* FROM `bs` WHERE `bs`.`a_id` = 1 ORDER BY `bs`.`id` ASC LIMIT 1
+  [1m[36mB Load (0.3ms)[0m  [1mSELECT `bs`.* FROM `bs` WHERE `bs`.`a_id` = 1 ORDER BY `bs`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM `cs` WHERE `cs`.`b_id` = 1
+  [1m[36mB Load (0.2ms)[0m  [1mSELECT `bs`.* FROM `bs` WHERE `bs`.`a_id` = 1 ORDER BY `bs`.`id` ASC LIMIT 1[0m
+  [1m[35mC Load (0.3ms)[0m  SELECT `cs`.* FROM `cs` WHERE `cs`.`b_id` = 1 ORDER BY `cs`.`id` ASC LIMIT 1
+  [1m[36m (0.9ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `as` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'a')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `cs` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'c')
+  [1m[36mC Load (0.3ms)[0m  [1mSELECT `cs`.* FROM `cs` WHERE `cs`.`a_id` = 2 ORDER BY `cs`.`id` ASC LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `cs` SET `a_id` = 2, `updated_at` = '2014-03-09 00:30:56' WHERE `cs`.`id` = 2
+  [1m[36mA Load (0.3ms)[0m  [1mSELECT `as`.* FROM `as` WHERE `as`.`id` = 2 ORDER BY `as`.`id` ASC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `as` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'a')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `bs` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'b')[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE `bs` SET `a_id` = 3, `updated_at` = '2014-03-09 00:30:56' WHERE `bs`.`id` = 2
+  [1m[36mB Load (0.3ms)[0m  [1mSELECT `bs`.* FROM `bs` WHERE `bs`.`a_id` = 3[0m
+  [1m[35mA Load (0.3ms)[0m  SELECT `as`.* FROM `as` WHERE `as`.`id` = 3 ORDER BY `as`.`id` ASC LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `bs` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'b')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `as` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'a')
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE `bs` SET `a_id` = 4, `updated_at` = '2014-03-09 00:30:56' WHERE `bs`.`id` = 3[0m
+  [1m[35mB Load (0.3ms)[0m  SELECT `bs`.* FROM `bs` WHERE `bs`.`a_id` = 4
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `as` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'a')[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `ds` (`created_at`, `updated_at`, `value`) VALUES ('2014-03-09 00:30:56', '2014-03-09 00:30:56', 'd')
+  [1m[36m (0.2ms)[0m  [1mINSERT INTO `as_ds` (`a_id`, `d_id`) VALUES (5, 1)[0m
+  [1m[35mD Load (0.4ms)[0m  SELECT `ds`.* FROM `ds` INNER JOIN `as_ds` ON `ds`.`id` = `as_ds`.`d_id` WHERE `as_ds`.`a_id` = 5
+  [1m[36mA Load (0.4ms)[0m  [1mSELECT `as`.* FROM `as` INNER JOIN `as_ds` ON `as`.`id` = `as_ds`.`a_id` WHERE `as_ds`.`d_id` = 1[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM `users`
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO `users` (`created_at`, `email`, `updated_at`) VALUES ('2014-03-09 00:30:56', 'a', '2014-03-09 00:30:56')[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'a' LIMIT 1
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'a' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT 1 AS one FROM `users` WHERE `users`.`email` = BINARY 'a' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM `users`[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
