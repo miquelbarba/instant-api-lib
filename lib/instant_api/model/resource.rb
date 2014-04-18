@@ -8,11 +8,7 @@ module InstantApi::Model
     end
 
     def find
-      if query_builder.parent?
-        query_builder.find(params)
-      else
-        query_builder.find_by_id(params[:id])
-      end
+      query_builder.find_first(params)
     end
   end
 end

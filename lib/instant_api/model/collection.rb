@@ -28,13 +28,7 @@ module InstantApi::Model
     end
 
     def collection
-      @collection ||= begin
-        if query_builder.parent?
-          query_builder.collection(params)
-        else
-          query_builder.all
-        end
-      end
+      @collection ||= query_builder.query(params)
     end
 
     def paginated_collection
