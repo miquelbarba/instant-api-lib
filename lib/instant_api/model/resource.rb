@@ -1,79 +1,17 @@
 module InstantApi::Model
   class Resource
-    attr_reader :klass, :request_path, :params
+    attr_reader :params, :query_builder
 
     def initialize(klass, request_path, params)
-      @klass, @request_path, @params = klass, request_path, params
+      @params = params
+      @query_builder = InstantApi::Model::ActiveRecordQueryBuilder.new(klass, request_path)
     end
 
     def find
-      if single_resource?(request_path)
-        single_resource(klass, params)
+      if query_builder.parent?
+        query_builder.find(params)
       else
-        multiple_resource(klass, params, request_path)
-      end
-    end
-
-
-    private
-
-    def single_resource?(url)
-      resources(url).size == 1
-    end
-
-    def single_resource(klass, params)
-      klass.find(params[:id])
-    end
-
-    def multiple_resource(klass, params, url)
-      result = klass.joins(build_joins(url)).where(build_params(url, params)).first
-      raise ActiveRecord::RecordNotFound.new if !result
-      result
-    end
-
-    def build_joins(url)
-      *rest, _ = *resources(url)
-      rest
-    end
-
-    def build_params(url, params)
-      result = { id: params[:id] }
-
-      resource, *rest = *resources(url)
-      klass = to_class(resource)
-      rest.map do |association_name|
-        if (assoc = association(klass, association_name))
-          table = assoc.join_table
-          result[table] = { assoc.foreign_key => params[assoc.foreign_key] }
-        end
-
-        resource = association_name
-        klass = to_class(resource)
-      end
-
-      result
-    end
-
-    def to_class(symbol)
-      symbol.to_s.classify.constantize
-    end
-
-    def association(klass, name)
-      klass.reflect_on_all_associations.select { |assoc| assoc.name == name }.first
-    end
-
-    def resources(url)
-      @resources ||= begin
-        resources = url.split('/').each_with_index.
-                        select { |_, index| index % 2 == 1 }.
-                        map { |a, _| a.to_sym }
-
-        *rest, tail = *resources
-        if tail == :edit || tail == :new
-          rest
-        else
-          resources
-        end
+        query_builder.find_by_id(params[:id])
       end
     end
   end
