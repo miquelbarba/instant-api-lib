@@ -1,5 +1,7 @@
 require 'spec_helper'
+require 'instant_api/controller/parameters'
 require 'instant_api/model/builder'
+require 'instant_api/model/active_record_query_builder'
 
 describe InstantApi::Model::ActiveRecordQueryBuilder do
   subject      { InstantApi::Model::ActiveRecordQueryBuilder.new(model) }
@@ -68,6 +70,17 @@ describe InstantApi::Model::ActiveRecordQueryBuilder do
       #  before { params[:name] = country.name + 'nothing' }
       #  it { subject.query(params).should be_empty }
       #end
+    end
+
+    context 'has_and_belongs_to_many' do
+      let(:movie) { create(:movie, countries: [country]) }
+      before { country.movies = [movie] }
+
+      let(:model) { Country }
+      let(:rails_params) { { movie_id: user.id } }
+      let(:request_path) { "/movies/#{movie.id}/countries" }
+
+      it { subject.query(params).should eq([country]) }
     end
   end
 

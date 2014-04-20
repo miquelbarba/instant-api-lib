@@ -10,3 +10,43 @@ Migrating to CreateCountries (20140419205834)
   [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140419205834')
   [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateMovies (20140421005321)
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateMovies (20140421005321)
+  [1m[35m (17.0ms)[0m  CREATE TABLE `movies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140421005321')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMoviesCountries (20140421005435)
+  [1m[35m (19.6ms)[0m  CREATE TABLE `movies_countries` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `countries_id` int(11), `movies_id` int(11)) ENGINE=InnoDB
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140421005435')
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.6ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateMoviesCountries (20140421005435)
+  [1m[36m (2.2ms)[0m  [1mDROP TABLE `movies_countries`[0m
+  [1m[35mSQL (2.8ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20140421005435'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCountriesMovies (20140421005435)
+  [1m[35m (16.1ms)[0m  CREATE TABLE `countries_movies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `countries_id` int(11), `movies_id` int(11)) ENGINE=InnoDB
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140421005435')
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
+Migrating to CreateCountriesMovies (20140421005435)
+  [1m[36m (2.6ms)[0m  [1mDROP TABLE `countries_movies`[0m
+  [1m[35mSQL (0.6ms)[0m  DELETE FROM `schema_migrations` WHERE `schema_migrations`.`version` = '20140421005435'
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT `schema_migrations`.* FROM `schema_migrations`[0m
+Migrating to CreateCountriesMovies (20140421005435)
+  [1m[35m (11.6ms)[0m  CREATE TABLE `countries_movies` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `country_id` int(11), `movie_id` int(11)) ENGINE=InnoDB
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO `schema_migrations` (`version`) VALUES ('20140421005435')
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
