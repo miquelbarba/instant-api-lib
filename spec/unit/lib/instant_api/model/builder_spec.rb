@@ -50,12 +50,12 @@ describe InstantApi::Model::Builder do
       end
 
       context 'build nested model' do
-        let(:data) { { address: { street: 'a' } }.with_indifferent_access }
+        let(:data) { { addresses: { street: 'a' } }.with_indifferent_access }
 
         it 'creates a record' do
           record = subject.build
           record.valid?.should be_true
-          record.address.size.should eq(1)
+          record.addresses.size.should eq(1)
         end
       end
     end
