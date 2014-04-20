@@ -16,8 +16,10 @@ module InstantApi::Controller
     def build_index
       body = %Q{
         require 'instant_api/model/collection'
+        require 'instant_api/controller/parameters'
         def index
-          collection = InstantApi::Model::Collection.new(#{model_class_name}, request.path, params)
+          parameters = InstantApi::Controller::Parameters.new(params, request.path)
+          collection = InstantApi::Model::Collection.new(#{model_class_name}, parameters)
           response = {
             collection: collection.paginated_collection,
             pagination: {

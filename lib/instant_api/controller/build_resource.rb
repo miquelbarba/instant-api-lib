@@ -1,14 +1,11 @@
 module InstantApi::Controller
   class BuildResource
-
-    attr_reader :model_class_name, :controller
-
     def initialize(controller, model_class_name)
       @controller, @model_class_name = controller, model_class_name
     end
 
     def build
-      controller.class_eval(&build_resource)
+      @controller.class_eval(&build_resource)
     end
 
     private
@@ -17,8 +14,12 @@ module InstantApi::Controller
       # TODO: extract this require
       body = %Q{
         require 'instant_api/model/resource'
+        require 'instant_api/controller/parameters'
         def resource
-          InstantApi::Model::Resource.new(#{model_class_name}, request.path, params).find
+          @resource ||= begin
+            parameters = InstantApi::Controller::Parameters.new(params, request.path)
+            InstantApi::Model::Resource.new(#{@model_class_name}, parameters).find
+          end
         end
         private :resource
       }

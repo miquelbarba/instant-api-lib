@@ -13,8 +13,9 @@ describe InstantApi::Controller::BuildIndex do
 
     context 'call to index' do
       let(:paginated_collection) { Object.new }
-      let(:params)  { Object.new }
-      let(:request) { double(:request, path: '/a') }
+      let(:params)               { Object.new }
+      let(:parameters)           { Object.new }
+      let(:request)              { double(:request, path: '/a') }
       let(:response) do
         {
           collection: paginated_collection,
@@ -32,6 +33,10 @@ describe InstantApi::Controller::BuildIndex do
         model_collection.should_receive(:per_page).and_return(5)
         model_collection.should_receive(:paginated_collection).and_return(paginated_collection)
         model_collection.should_receive(:count).and_return(7)
+
+        InstantApi::Controller::Parameters.should_receive(:new).
+                                           with(params, request.path).
+                                           and_return(parameters)
 
         controller.should_receive(:request).and_return(request)
         controller.should_receive(:params).and_return(params)
