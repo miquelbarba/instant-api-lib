@@ -2,9 +2,9 @@ module InstantApi::Model
   class Resource
     attr_reader :params, :query_builder
 
-    def initialize(klass, request_path, params)
+    def initialize(klass, params)
       @params = params
-      @query_builder = InstantApi::Model::ActiveRecordQueryBuilder.new(klass, request_path)
+      @query_builder = InstantApi::Model::ActiveRecordQueryBuilder.new(klass)
     end
 
     def find

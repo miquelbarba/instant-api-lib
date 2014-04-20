@@ -1,22 +1,22 @@
 
 module InstantApi::Model
   class ActiveRecordQueryBuilder
-    attr_reader :model, :request_path
-    def initialize(model, request_path)
-      @model, @request_path = model, request_path
+    attr_reader :model
+    def initialize(model)
+      @model = model
     end
 
     def query(params)
-      if has_associations?
-        model.joins(build_joins(request_path)).
-              where(build_conditions(request_path, params))
+      if has_associations?(params)
+        model.joins(build_joins(params)).
+              where(build_conditions(params))
       else
         model.all
       end
     end
 
     def find_first(params)
-      result = if has_associations?
+      result = if has_associations?(params)
                  query(params).first
                else
                  model.find(params[:id])
@@ -27,20 +27,20 @@ module InstantApi::Model
 
     private
 
-    def has_associations?
-      resources_from_url(request_path).size > 1
+    def has_associations?(params)
+      params.resources.size > 1
     end
 
-    def build_joins(url)
-      *rest, _ = *resources_from_url(url)
-      rest.reverse.map{|resource| resource.to_s.singularize.to_sym}.array_to_hash
+    def build_joins(params)
+      *rest, _ = *params.resources
+      rest.reverse.map { |resource| resource.to_s.singularize.to_sym }.array_to_hash
     end
 
-    def build_conditions(url, params)
+    def build_conditions(params)
       result = Hash.new
       result[:id] = params[:id] if params[:id]
 
-      resource, *rest = *resources_from_url(url)
+      resource, *rest = *params.resources
       klass = to_class(resource)
       rest.map do |association_name|
         if (assoc = association(klass, association_name))
@@ -74,21 +74,6 @@ module InstantApi::Model
 
     def association(klass, name)
       klass.reflect_on_association(name.to_s.pluralize.to_sym)
-    end
-
-    def resources_from_url(url)
-      @resources_from_url ||= begin
-        resources = url.split('/').each_with_index.
-            select { |_, index| index % 2 == 1 }.
-            map { |a, _| a.to_sym }
-
-        *rest, tail = *resources
-        if tail == :edit || tail == :new
-          rest
-        else
-          resources
-        end
-      end
     end
   end
 end

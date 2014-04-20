@@ -4,8 +4,7 @@ module InstantApi::Controller
     attr_reader :model_class_name, :controller
 
     def initialize(controller, model_class_name)
-      @controller = controller
-      @model_class_name = model_class_name
+      @controller, @model_class_name = controller, model_class_name
     end
 
     def build
@@ -19,8 +18,9 @@ module InstantApi::Controller
       body = %Q{
         require 'instant_api/model/builder'
         def create
-          resource = InstantApi::Model::Builder.new(params, #{model_class_name}, true).build
-          render json: resource
+          parameters = InstantApi::Controller::Parameters.new(params, request.path)
+          builder = InstantApi::Model::Builder.new(parameters, #{model_class_name}, true)
+          render json: builder.build
         end
       }
 
