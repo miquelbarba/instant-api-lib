@@ -31,6 +31,16 @@ describe InstantApi::Model::ActiveRecordQueryBuilder do
       it { subject.query(params).should eq([address]) }
     end
 
+    context 'additional parameters' do
+      let(:model)        { Address }
+      let(:rails_params) { { user_id: user.id, city: 'Barcelona' } }
+      let(:request_path) { "/users/#{user.id}/addresses" }
+      let(:address2) { create(:address, user_id: user.id, city: 'Barcelona') }
+      let(:address3) { create(:address, user_id: user.id, city: 'Madrid') }
+
+      it { subject.query(params).should eq([address2]) }
+    end
+
     context 'query second level model with an invalid id, returns nothing' do
       let(:model)        { Address }
       let(:rails_params) { { user_id: user.id } }
@@ -80,7 +90,7 @@ describe InstantApi::Model::ActiveRecordQueryBuilder do
       let(:rails_params) { { movie_id: movie.id } }
       let(:request_path) { "/movies/#{movie.id}/countries" }
 
-      it { subject.query(params).all.should eq([country]) }
+      it { subject.query(params).should eq([country]) }
     end
   end
 

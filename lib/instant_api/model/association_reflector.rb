@@ -20,13 +20,13 @@
 
 
 module InstantApi::Model
-  class JoinCalculator
+  class AssociationReflector
 
     def initialize(association_list)
       @association_list = association_list
     end
 
-    def calculate
+    def calculate_join
       *associations, resource = *@association_list
       klass = to_class(resource)
       first, *rest = *associations.reverse
@@ -49,6 +49,37 @@ module InstantApi::Model
       result
     end
 
+    def calculate_conditions(params)
+      result = Hash.new
+      result[:id] = params[:id] if params[:id]
+
+      resource, *rest = *params.resources
+      klass = to_class(resource)
+      rest.map do |association_name|
+        if (assoc = association(klass, association_name))
+          table = join_table(assoc)
+          foreign_key = foreign_key(assoc)
+          result[table] = { foreign_key => params[foreign_key] }
+        end
+
+        resource = association_name
+        klass = to_class(resource)
+      end
+
+      result
+    end
+
+    def join_table(assoc)
+      if assoc.has_and_belongs_to_many?
+        assoc.join_table.to_sym
+      else
+        assoc.name.to_sym
+      end
+    end
+
+    def foreign_key(assoc)
+      assoc.foreign_key.to_sym
+    end
 
     def association(klass, name)
       klass.reflect_on_association(name.to_s.singularize.to_sym) ||

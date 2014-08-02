@@ -51,3 +51,4 @@ Migrating to CreateCountriesMovies (20140421005435)
   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
   [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT `schema_migrations`.* FROM `schema_migrations`
   [1m[36mCountry Load (2.5ms)[0m  [1mSELECT `countries`.* FROM `countries` INNER JOIN `addresses` ON `addresses`.`id` = `countries`.`address_id` INNER JOIN `users` ON `users`.`id` = `addresses`.`user_id`[0m
+  [1m[35mAddress Load (0.3ms)[0m  SELECT `addresses`.* FROM `addresses` ORDER BY `addresses`.`id` ASC LIMIT 1
