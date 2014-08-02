@@ -1,3 +1,4 @@
+require 'instant_api/model/join_calculator'
 
 module InstantApi::Model
   class ActiveRecordQueryBuilder
@@ -32,8 +33,7 @@ module InstantApi::Model
     end
 
     def build_joins(params)
-      *rest, _ = *params.resources
-      rest.reverse.map { |resource| resource.to_s.singularize.to_sym }.array_to_hash
+      InstantApi::Model::JoinCalculator.new(params.resources).calculate
     end
 
     def build_conditions(params)

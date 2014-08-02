@@ -77,10 +77,10 @@ describe InstantApi::Model::ActiveRecordQueryBuilder do
       before { country.movies = [movie] }
 
       let(:model) { Country }
-      let(:rails_params) { { movie_id: user.id } }
+      let(:rails_params) { { movie_id: movie.id } }
       let(:request_path) { "/movies/#{movie.id}/countries" }
 
-      it { subject.query(params).should eq([country]) }
+      it { subject.query(params).all.should eq([country]) }
     end
   end
 
