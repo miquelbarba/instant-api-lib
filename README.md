@@ -227,7 +227,8 @@ If we ask for a resource that doesn't exists, a 404 HTTP error will be return
 
 - Integration with a authentication mechanism, API only available to authenticated users
 - Implementation of a cache
-- Response json configuration
+- Configure the response json
+- Any request/opinion/PR is more than welcome
 
 
 ![Code Climate](https://codeclimate.com/github/miquelbarba/instant-api.png)
