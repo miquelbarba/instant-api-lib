@@ -33,7 +33,7 @@ class Country < ActiveRecord::Base
 end
 ```
 
-And you want to access these though a Rest API, for instanace, your config/routes.rb
+And you want to access these though a Rest API, for instance, your config/routes.rb is
 
 ```ruby
 YourApp::Application.routes.draw do
@@ -42,6 +42,8 @@ YourApp::Application.routes.draw do
   end
 end
 ```
+
+We aware that you must create the associations needed in the models, to access the data.
 
 The routes generated are
 
