@@ -20,6 +20,7 @@ module InstantApi::Controller
       Proc.new do
         def update
           resource.update_attributes!(check_strong_parameters)
+          raise ActiveRecord::RecordInvalid.new(record) if resource.invalid?
           render json: resource
         end
       end

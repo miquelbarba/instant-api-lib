@@ -21,7 +21,10 @@ module InstantApi::Controller
         def create
           parameters = InstantApi::Controller::Parameters.new(params, request.path)
           builder = InstantApi::Model::Builder.new(parameters, #{model_class_name}, true)
-          render json: builder.build
+          resource = builder.build
+          raise ActiveRecord::RecordInvalid.new(resource) if resource.invalid?
+
+          render json: resource
         end
       }
 

@@ -12,13 +12,13 @@ describe InstantApi::Controller::BuildUpdate do
     it { controller.respond_to?(:update).should be_true }
 
     describe '#update' do
-      let(:resource)      { Object.new }
+      let(:resource)      { double('resource', valid?: true, invalid?: false) }
       let(:strong_params) { Object.new }
 
       before do
         resource.should_receive(:update_attributes!).with(strong_params)
 
-        controller.should_receive(:resource).twice.and_return(resource)
+        controller.should_receive(:resource).any_number_of_times.and_return(resource)
         controller.should_receive(:check_strong_parameters).and_return(strong_params)
         controller.should_receive(:render).with(json: resource).and_return(true)
       end

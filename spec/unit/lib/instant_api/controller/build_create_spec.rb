@@ -12,7 +12,7 @@ describe InstantApi::Controller::BuildCreate do
     it { controller.respond_to?(:create).should be_true }
 
     context 'call to create' do
-      let(:resource)   { Object.new }
+      let(:resource)   { double('resource', valid?: true, invalid?: false) }
       let(:params)     { Object.new }
       let(:parameters) { Object.new }
       let(:builder)    { double(:builder, build: resource) }
