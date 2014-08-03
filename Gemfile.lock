@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     instant-api (0.1)
-      kaminari (~> 0.15.0)
-      rails (~> 4.0.0)
-      rails-api (~> 0.2.0)
+      kaminari (~> 0.15)
+      rails (~> 4.0)
+      rails-api (~> 0.2)
 
 GEM
   remote: https://rubygems.org/

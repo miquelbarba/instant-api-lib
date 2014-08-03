@@ -1,3 +1,4 @@
+require 'instant_api'
 require 'active_record/validations'
 
 module InstantApi::Controller
