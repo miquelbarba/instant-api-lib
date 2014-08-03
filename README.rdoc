@@ -1,7 +1,5 @@
 # Overview
 
-¡¡¡¡¡¡Work in progress!!!!!!
-
 Instant-API automatically creates a REST API from a Rails project
 Configuration
 ---
