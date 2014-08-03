@@ -227,4 +227,5 @@ If we ask for a resource that doesn't exists, a 404 HTTP error will be return
 - Response json configuration
 
 
-{<img src="https://codeclimate.com/github/miquelbarba/instant-api.png" />}[https://codeclimate.com/github/miquelbarba/instant-api]
+![Code Climate](https://codeclimate.com/github/miquelbarba/instant-api.png)
+
