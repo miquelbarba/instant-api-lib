@@ -16,6 +16,10 @@ module InstantApi::Controller
       params[key]
     end
 
+    def select(&block)
+      params.select(&block)
+    end
+
     # '/users/2/addresses/3/edit' -> [:users, :addresses]
     def resources
       @resources ||= begin
