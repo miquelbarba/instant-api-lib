@@ -43,7 +43,7 @@ YourApp::Application.routes.draw do
 end
 ```
 
-We aware that you must create the associations needed in the models, to access the data.
+Be aware that you must create the associations needed in the models, to access the data.
 
 The routes generated are
 
