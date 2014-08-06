@@ -231,5 +231,10 @@ If we ask for a resource that doesn't exists, a 404 HTTP error will be return
 - Any request/opinion/PR is more than welcome
 
 
+# License
+
+Instant-API is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
+
 ![Code Climate](https://codeclimate.com/github/miquelbarba/instant-api.png)
 
