@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'kaminari', '~> 0.15'
   s.add_runtime_dependency 'rails-api', '~> 0.2'
   s.add_runtime_dependency 'rails', '~> 4.0'
+  s.add_runtime_dependency 'jbuilder', '~> 2.2'
 end
